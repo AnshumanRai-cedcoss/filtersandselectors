@@ -38,46 +38,44 @@ var products = [
 ];
 createPageElement();
 $(document).ready(function () {
-	var brandOption =[];
-	var osOption =[];
-	for (let index = 0; index < products.length; index++) {
-		brandOption.push(products[index].brand);
-		osOption.push(products[index].os);
-	}
-	brandOption = Array.from(new Set(brandOption));
-	osOption = Array.from(new Set(osOption));
-	console.log(brandOption,osOption);
-	var bo = `<select name="" id="brands">
+  var brandOption = [];
+  var osOption = [];
+  for (let index = 0; index < products.length; index++) {
+    brandOption.push(products[index].brand);
+    osOption.push(products[index].os);
+  }
+  brandOption = Array.from(new Set(brandOption));
+  osOption = Array.from(new Set(osOption));
+  console.log(brandOption, osOption);
+  var bo = `<select name="" id="brands">
     <option value="">Select brand</option>`;
-   for (let index = 0; index < brandOption.length; index++) {
-	    bo +=`<option value="${brandOption[index]}">"${brandOption[index]}"</option>`;
-   }
-   bo += `</select>`;
-   $("#brand").html(bo);
-   var oso = `<select name="" id="brands">
+  for (let index = 0; index < brandOption.length; index++) {
+    bo += `<option value="${brandOption[index]}">"${brandOption[index]}"</option>`;
+  }
+  bo += `</select>`;
+  $("#brand").html(bo);
+  var oso = `<select name="" id="brands">
     <option value="">Select OS</option>`;
-   for (let index = 0; index < osOption.length; index++) {
-	    oso +=`<option value="${osOption[index]}">"${osOption[index]}"</option>`;
-   }
-   oso += `</select>`;
-   $("#os").html(oso);
+  for (let index = 0; index < osOption.length; index++) {
+    oso += `<option value="${osOption[index]}">"${osOption[index]}"</option>`;
+  }
+  oso += `</select>`;
+  $("#os").html(oso);
   $("body").on("change", "#brand", function () {
     var brandSel = $("#brand").val();
-	var filterBrand = [];
-     for (let index = 0; index < products.length; index++) {
-		 if(products[index].brand == brandSel)
-		 filterBrand.push(products[index]);
-	 }
+    var filterBrand = [];
+    for (let index = 0; index < products.length; index++) {
+      if (products[index].brand == brandSel) filterBrand.push(products[index]);
+    }
     displayTable(filterBrand);
   });
   $("body").on("change", "#os", function () {
-	var osSel = $("#os").val();
-	console.log(osSel);
-	var osBrand = [];
-     for (let index = 0; index < products.length; index++) {
-		 if(products[index].os == osSel)
-		 osBrand.push(products[index]);
-	 }
+    var osSel = $("#os").val();
+    console.log(osSel);
+    var osBrand = [];
+    for (let index = 0; index < products.length; index++) {
+      if (products[index].os == osSel) osBrand.push(products[index]);
+    }
     displayTable(osBrand);
   });
   displayTable(products);
@@ -125,12 +123,13 @@ function displayTable(products) {
   $("#table").html(nm);
 }
 function createPageElement() {
-  var html =
-    '<div class="header"><div id="filterdropdown"><select name="" id="brand"></select><select name="" id="os">\
-	</select></div>\
-	<div id="searchBar">\
-	<label for="search">Search: <input type="text" id="search">\
-	</label></div>\
-	</div>';
-  $("#wrapper").html(html);
-} 
+  var htmlPage = `<div id="filterdropdown">
+  <select name="" id="brand"></select>
+  <select name="" id="os"></select>
+</div>
+<div id="table"></div>
+<div id="searchBar">
+<label for="search">Search: <input type="text" id="search" /> </label>
+</div>`;
+  $(".wrapper").html(htmlPage);
+}

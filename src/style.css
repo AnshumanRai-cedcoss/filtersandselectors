@@ -13,18 +13,16 @@
 }
 td {
   border: 1px solid black;
-  padding:10px;
+  padding: 10px;
 }
 th {
   border: 2px solid black;
 }
-.header {
-  overflow: hidden;
-}
-.header #searchBar {
+#searchBar {
   float: left;
   width: 30%;
   margin-left: 20%;
+  position: fixed;
 }
 #filterdropdown {
   float: right;
