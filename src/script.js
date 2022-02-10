@@ -44,9 +44,10 @@ $(document).ready(function () {
     brandOption.push(products[index].brand);
     osOption.push(products[index].os);
   }
-  brandOption = Array.from(new Set(brandOption));
-  osOption = Array.from(new Set(osOption));
+  brandOption = Array.from(new Set(brandOption)); //removing duplicacy from brands name
+  osOption = Array.from(new Set(osOption));   //   removing duplicacy from os name
   console.log(brandOption, osOption);
+  //adding values to brand selector
   var bo = `<select name="" id="brands">
     <option value="">Select brand</option>`;
   for (let index = 0; index < brandOption.length; index++) {
@@ -54,6 +55,7 @@ $(document).ready(function () {
   }
   bo += `</select>`;
   $("#brand").html(bo);
+  // adding values to os selector
   var oso = `<select name="" id="brands">
     <option value="">Select OS</option>`;
   for (let index = 0; index < osOption.length; index++) {
@@ -68,6 +70,15 @@ $(document).ready(function () {
       if (products[index].brand == brandSel) filterBrand.push(products[index]);
     }
     displayTable(filterBrand);
+	$("body").on("change", "#os", function () {
+		var osSel = $("#os").val();
+		var osBrand = [];
+		for (let index = 0; index < filterBrand.length; index++) {
+		  if (filterBrand[index].os == osSel)
+		   osBrand.push(filterBrand[index]);
+		}
+		displayTable(osBrand);
+	  });
   });
   $("body").on("change", "#os", function () {
     var osSel = $("#os").val();
@@ -77,6 +88,15 @@ $(document).ready(function () {
       if (products[index].os == osSel) osBrand.push(products[index]);
     }
     displayTable(osBrand);
+	$("body").on("change", "#brand", function () {
+		var brandSel = $("#brand").val();
+		var filterBrand = [];
+		for (let index = 0; index < osBrand.length; index++) {
+		  if (osBrand[index].brand == brandSel)
+		   filterBrand.push(osBrand[index]);
+		}
+		displayTable(filterBrand);
+	  });
   });
   displayTable(products);
 });
