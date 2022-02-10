@@ -1,0 +1,32 @@
+.wrapper #table {
+  text-align: center;
+  padding: 20%;
+  padding-bottom: 10px;
+  padding-top: 30px;
+  margin-top: 10px;
+}
+
+#table table {
+  margin-right: 0px;
+  width: 80vh;
+  border: 5px solid red;
+}
+td {
+  border: 1px solid black;
+  padding:10px;
+}
+th {
+  border: 2px solid black;
+}
+.header {
+  overflow: hidden;
+}
+.header #searchBar {
+  float: left;
+  width: 30%;
+  margin-left: 20%;
+}
+#filterdropdown {
+  float: right;
+  width: 58%;
+}
